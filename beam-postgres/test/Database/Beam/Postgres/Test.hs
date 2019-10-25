@@ -80,9 +80,3 @@ startTempPostgres = do
 
   pure ( fromString ("host=" ++ pgDataDir)
        , void (callProcess "pg_ctl" [ "stop", "-D", pgDataDir ]))
-
-#if MIN_VERSION_base(4,12,0)
--- TODO orphan instances are bad
-instance Monad m => MonadFail (Hedgehog.PropertyT m) where
-    fail _ = Hedgehog.failure
-#endif
